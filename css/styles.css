@@ -6,11 +6,24 @@ h5,
 h6,
 p {
   margin: 0;
+  padding: 0;
 }
 ul {
   margin: 0;
   padding-left: 0;
   list-style: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+button{
+  cursor: pointer;
 }
 .container {
   width: 1158px;
@@ -301,4 +314,17 @@ header .container {
 .team-name {
   margin-top: 32px;
   margin-bottom: 8px;
+}
+.icon { fill: currentColor; }
+
+.social-link{
+  display:inline-grid; place-items:center;
+  width:40px; height:40px; border-radius:50%;
+  color: var(--muted);
+  background:#f4f4fd;
+  transition: color var(--tr), background-color var(--tr);
+}
+.social-link:hover{
+  color:#fff;
+  background: var(--brand);
 }
