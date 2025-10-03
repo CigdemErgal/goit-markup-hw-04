@@ -320,11 +320,11 @@ header .container {
 .social-link{
   display:inline-grid; place-items:center;
   width:40px; height:40px; border-radius:50%;
-  color: var(--muted);
-  background:#f4f4fd;
-  transition: color var(--tr), background-color var(--tr);
+  color: #f4f4fd;
+  background:#4d5ae5;
+  transition: color  #f4f4fd, background-color #f4f4fd;
 }
 .social-link:hover{
-  color:#fff;
+  color:#f4f4fd;
   background: var(--brand);
 }
