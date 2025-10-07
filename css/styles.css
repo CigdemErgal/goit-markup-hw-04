@@ -18,17 +18,35 @@ img {
   max-width: 100%;
   height: auto;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
-button{
+button {
   cursor: pointer;
 }
 .container {
   width: 1158px;
   margin: 0 auto;
   padding: 0 15px;
+}
+.features-list {
+  display: flex;
+  gap: 24px;
+}
+.fetures-item {
+  flex-basis: calc((100%-72px) / 4);
+}
+.feature-icon {
+  width: 264px;
+  height: 112px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4fd;
+  border: 1px solid #8e8f99;
+  border-radius: 4px;
+  margin-bottom: 24px;
 }
 body {
   font-family: "Roboto", sans-serif;
@@ -95,10 +113,45 @@ header .container {
 .contacts-link:focus {
   color: #404bbf;
 }
+.site-nav .nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 24px 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.site-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #404bbf;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform - 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.site-nav .nav-link:hover::after,
+.site-nav .nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
 
 .hero {
   background-color: #2e2f42;
+  min-height: 600px;
   padding: 188px 0;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url("../images/people-office-1.jpg");
+  background-size: cover, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .hero .container {
   text-align: center;
@@ -179,6 +232,33 @@ header .container {
 .team {
   background-color: #f4f4fd;
 }
+.socials {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+}
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: #4d5ae5;
+  color: #fff;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0, 2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-link:is(:hover, :focus) {
+  background-color: #404bbf;
+  transform: translateY(-1px);
+}
+.icon {
+  fill: currentColor;
+}
+
 .section-title {
   text-align: center;
   font-weight: 700;
@@ -206,6 +286,9 @@ header .container {
   border-radius: 4px;
   padding-bottom: 32px;
   text-align: center;
+  overflow: hidden;
+  box-shadow: 0 2px 1px 2px rgba(46, 47, 66, 0.08),
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 .team-name {
   font-weight: 500;
@@ -250,6 +333,32 @@ header .container {
 .portfolio-card {
   background: #ffffff;
   border: 1px solid #e7e9fc;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-card:hover {
+  border-color: transparent;
+  box-shadow: 0 2px 1px rgba(46, 47, 66, 0.08), 0 4px 4px rgba(46, 47, 66, 0.16),
+    0 8px 16px rgba(46, 47, 66, 0.08);
+}
+.thumb {
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(77, 90, 229, 1);
+  color: #fff;
+  padding: 40px 32px;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-card:hover .overlay,
+.portfolio-card:focus-within .overlay {
+  transform: translateY(0);
 }
 .portfolio-link {
   text-decoration: none;
@@ -278,6 +387,11 @@ header .container {
   background-color: #2e2f42;
   padding: 40px 0;
 }
+.site-footer .container {
+  display: flex;
+  align-items: baseline;
+  gap: 120px;
+}
 .footer-logo {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
@@ -296,6 +410,23 @@ header .container {
 .footer-logo .logo-accent {
   color: #4d5ae5;
 }
+.footer-social-title {
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+.footer-social .socials {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .nav-list,
 .contacts-list,
 .features-ul,
@@ -315,16 +446,6 @@ header .container {
   margin-top: 32px;
   margin-bottom: 8px;
 }
-.icon { fill: currentColor; }
-
-.social-link{
-  display:inline-grid; place-items:center;
-  width:40px; height:40px; border-radius:50%;
-  color: #f4f4fd;
-  background:#4d5ae5;
-  transition: color  #f4f4fd, background-color #f4f4fd;
-}
-.social-link:hover{
-  color:#f4f4fd;
-  background: var(--brand);
+.icon {
+  fill: currentColor;
 }
